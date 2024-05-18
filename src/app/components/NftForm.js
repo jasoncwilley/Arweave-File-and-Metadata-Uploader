@@ -72,20 +72,24 @@ export default function NftForm({ walletKey }) {
   return (
     <form onSubmit={handleSubmit}>
       <div>
+    <p>Create a name to associate with your upload</p>
         <label>Name:</label>
         <input type="text" name="name" value={metadata.name} onChange={handleChange} required />
       </div>
       <div>
+     <p>Write a short description describing your upload</p>
         <label>Description:</label>
         <textarea name="description" value={metadata.description} onChange={handleChange} required />
       </div>
       <div>
         <label>Image URL:</label>
+     <p>Click browse and select the file you want to upload. After selecting the file click the Upload to Arewave button to recieve a URL</p>
         <input type="text" name="image" value={metadata.image} onChange={handleChange} required />
         <FileUpload onUpload={handleUpload} walletKey={walletKey} />
       </div>
       <div>
         <h4>Attributes:</h4>
+    <p>Add unique attributes to your upload the Key:, Value format by inputing a key value pair and clicking the add button.  You can add as many as you would like</p>
         <label>Trait Type:</label>
         <input type="text" name="trait_type" value={attribute.trait_type} onChange={handleAttributeChange} />
         <label>Value:</label>
@@ -97,8 +101,11 @@ export default function NftForm({ walletKey }) {
           ))}
         </ul>
       </div>
+          <p>Click the Upload Metadata to once the form has been completed and it will return 
+              a transaction id identifying where the data was uploaded.  In addition a View on 
+                Arweave button will appear and when clicked redirect to the data that was uploaded</p>
       <button type="submit" disabled={loading}>
-        {loading ? 'Uploading...' : 'Generate Metadata JSON'}
+        {loading ? 'Uploading...' : 'Upload Metadata'}
       </button>
       {txId && (
         <div>
